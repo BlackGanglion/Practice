@@ -6,9 +6,12 @@
 
 在github上发现了一份node非常棒的实践课程：[https://github.com/alsotang/node-lessons](https://github.com/alsotang/node-lessons)
 
-lesson 0, 1, 2 比较基础，建过博客也基本都了解了，直接进入lesson3，小小实践了一下去爬POJ的题目页面。
+lesson 0, 1, 2 比较基础，建过博客也基本都了解了，直接进入lesson3，小小实践了一下去爬 [POJ](http://poj.org/) 的题目页面。
 
 **2015.8.18**
 
-前些天又忙着项目，又疏于学习了，今天简单实践了lesson 4，不过 [eventproxy](https://github.com/JacksonTian/eventproxy) 的异步控制还需要进一步掌握，爬了一下codeforces的题目列表，将题库第一页的题目的标题、时限、空间限制、描述、输入、输出爬下来。
+前些天又忙着项目，又疏于学习了，今天简单实践了lesson 4，不过 [eventproxy](https://github.com/JacksonTian/eventproxy) 的异步控制还需要进一步掌握，爬了一下 [codeforces](http://codeforces.com/) 的题目列表，将题库第一页的题目的标题、时限、空间限制、描述、输入、输出爬下来。
 
+**2015.8.19**
+
+完成lesson 5, 使用async控制并发, 抓取 [codeforces](http://codeforces.com/) 的题目列表, 记录执行时间
