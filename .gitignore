@@ -1,2 +1,3 @@
 # ignore nodejs package
 node_modules/
+assets/
