@@ -4,3 +4,5 @@
 
 ![](https://github.com/BlackGanglion/Practice/blob/master/CSS3-practice/img-stack/demo.jpg)
 
+(2) [CSS3图片动态提示效果](http://www.imooc.com/view/473)
+
