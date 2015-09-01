@@ -1,0 +1,181 @@
+body, figure, figcaption, h2, p, img{
+  margin: 0;
+  padding: 0;
+}
+
+/* 父容器为relative, 子容器为absolute, 子容器会相对父容器定位 */
+figure{
+  position: relative;
+  float: left;
+  width: 33.33%;
+  overflow: hidden;
+  height: 350px;
+}
+figure img{
+  /* 虚化 */
+  opacity: 0.8;
+  transition:all 0.35s;
+}
+figure figcaption p, h2, span, div{
+  /* 动画效果 */
+  transition:all 0.35s;
+}
+figcaption{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: white;
+  font-family: "微软雅黑";
+}
+
+@media screen and (max-width: 600px){
+  figure{
+    width:100%;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1000px){
+  figure{
+    width:50%;
+  }
+}
+@media screen and (min-width:1001px){
+  figure{
+    width: 33.33%;
+  }
+}
+
+.test1{
+  background: #2F0000
+}
+.test1 figcaption p{
+  background: #FFF;
+  color: #333;
+  margin: 5px;
+  text-align: center;
+  transform: translate(-120px, 0px);
+}
+.test1 figcaption p:nth-of-type(1){
+  transition-delay: 0.1s;
+}
+.test1 figcaption p:nth-of-type(2){
+  transition-delay: 0.2s;
+}
+.test1 figcaption p:nth-of-type(3){
+  transition-delay: 0.3s;
+}
+.test1 figcaption{
+  padding: 20px;
+}
+.test1:hover figcaption p{
+  transform: translate(0px, 0px);
+}
+.test1:hover img{
+  transform: translate(-50px, 0px);
+  opacity: 0.5;
+}
+
+.test2{
+  background: #2F0000;
+}
+.test2 figcaption{
+  width: 100%;
+  height: 100%;
+}
+.test2 figcaption h2{
+  margin-top: 15%;
+  margin-left: 15%;
+}
+.test2 figcaption p{
+  margin-left: 15%;
+  transform: translate(0px, 50px);
+  opacity: 0;
+}
+.test2 figcaption div{
+  border: 2px solid #FFF;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: translate(0px, -350px) rotate(0deg);
+}
+.test2:hover figcaption div{
+  transform: translate(0px, 0px) rotate(360deg);
+}
+.test2:hover img{
+  opacity: 0.5;
+}
+.test2:hover figcaption p{
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+.test3{
+  background: #2F0000;
+}
+.test3 figcaption{
+  top: 30%;
+  left: 15%;
+}
+.test3 figcaption h2{
+  transform:skew(90deg);
+}
+.test3 figcaption p{
+  transform: skew(90deg);
+  transition-delay: 0.1s;
+}
+.test3:hover figcaption h2{
+  transform: skew(0deg);
+}
+.test3:hover figcaption p{
+  transform: skew(0deg);
+}
+.test3:hover img{
+  opacity: 0.5;
+}
+
+.test4{
+  background: #2F0000;
+}
+.test4 figcaption{
+  width: 100%;
+  height: 100%;
+}
+.test4 figcaption h2{
+  margin-top: 15%;
+  margin-left: 15%;
+  transform: scale(1.2, 1.2);
+  opacity: 0;
+}
+.test4 figcaption p{
+  margin-top: 5px;
+  margin-left: 15%;
+  transform: scale(1.2, 1.2);
+  opacity: 0;
+}
+.test4 figcaption div{
+  border: 2px solid #FFF;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: scale(1.2, 1.2);
+  opacity: 0;
+}
+.test4:hover figcaption div{
+  transform: scale(1, 1);
+  opacity: 1;
+}
+.test4:hover img{
+  opacity: 0.5;
+  transform:scale(1.2, 1.2);
+}
+.test4:hover figcaption h2{
+  transform: scale(1, 1);
+  opacity: 1;
+}
+.test4:hover figcaption p{
+  transform: scale(1, 1);
+  opacity: 1;
+}
