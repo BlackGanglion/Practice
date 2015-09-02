@@ -1,0 +1,40 @@
+nav{
+  background: #ccc;
+  height: 50px;
+}
+
+#banner{
+  background: #777;
+  height: 700px;
+}
+
+nav ul{
+  list-style: none;
+  margin: 0;
+}
+
+nav ul li{
+  display: inline-block;
+  line-height: 50px;
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li a{
+  line-height: 50px;
+  text-decoration: none;
+  display: inline-block;
+  height: inherit;
+}
+
+nav ul li.logo{
+  float: left;
+}
+
+#banner .inner{
+  max-width: 300px;
+}
+
+#banner .inner h1{
+  margin: 0;
+}
