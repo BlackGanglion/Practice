@@ -1,3 +1,7 @@
+*{
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
 nav{
   background: #ccc;
   height: 50px;
@@ -11,12 +15,12 @@ nav{
 nav ul{
   list-style: none;
   margin: 0;
+  float: right;
 }
 
-nav ul li{
+nav ul li, nav .logo{
   display: inline-block;
   line-height: 50px;
-  float: right;
   margin-right: 20px;
 }
 
@@ -25,16 +29,148 @@ nav ul li a{
   text-decoration: none;
   display: inline-block;
   height: inherit;
+  color: #fff;
 }
 
-nav ul li.logo{
+nav .logo{
   float: left;
+  padding-left: 10px;
 }
 
 #banner .inner{
   max-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  top: 200px;
 }
 
 #banner .inner h1{
   margin: 0;
+}
+
+button{
+  border: none;
+  background: #333;
+  color: #eee;
+  padding: 10px;
+}
+
+#banner button{
+  padding: 14px 20px;
+}
+
+.sub-heading{
+  line-height: 30px;
+  font-size: 18px;
+  margin: 30px 0;
+}
+
+#banner .inner .more{
+  margin-top: 250px;
+}
+
+.logo{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.logo a{
+  color: #fff;
+}
+
+.hr{
+    width: 1000px;
+    height: 2px;
+    margin: 0 auto;
+    margin: 20px 0;
+}
+
+.green-section{
+  text-align: center;
+  background: #089D80;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.wrapper div h2{
+  display: inline;
+}
+
+.green-section .hr{
+  background: #078494;
+}
+
+.green-section .icon-group .icon{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: #0D6F7C;
+  transform: rotate(45deg);
+  margin: 20px;
+}
+
+.icon-group{
+  margin-top: 60px;
+}
+
+.gray-section{
+  background: #252F34;
+  color: #fff;
+}
+
+.gray-section .img-section{
+  width: 45%;
+}
+
+.img-section img{
+  width: 100%;
+}
+
+.gray-section .text-section{
+  width: 55%;
+  position: relative;
+  top:68px;
+  left:50px;
+}
+
+
+
+.article-preview{
+  font-size: 0;
+}
+.article-preview::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.article-preview:nth-child(odd){
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.article-preview > div{
+  float: left;
+}
+
+.text-section > div{
+  max-width: 90%;
+}
+.text-section h2{
+  font-size: 22px;
+}
+.text-section p{
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+.text-section .sub-heading{
+  font-size: 18px;
 }
