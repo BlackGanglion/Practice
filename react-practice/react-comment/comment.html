@@ -54,18 +54,13 @@
     });
 
     var CommentBox = React.createClass({
-      loadCommentFromServer: function (){
-        var now = new Date().getTime();
-        var data = [
-          {author: "作者 1", text: "评论 1"+now},
-          {author: "作者 2", text: " *评论 2* "+now}
-        ];
-
-        this.setState({data: data});
-        /*
-        $.ajax()
-        */
-      },
+			loadCommentFromServer: function (){
+				var self = this;
+				//评论数据接口
+				$.getJSON(this.props.url, function(data){
+					self.setState({data: data});
+				});
+			},
       getInitialState: function (){
         return {data: []};
       },
@@ -85,7 +80,7 @@
     });
 
     React.render(
-      <CommentBox pollInterval={1000} />,
+      <CommentBox url='comment.json' pollInterval={1000} />,
       document.getElementById('content')
     );
   </script>
