@@ -61,18 +61,13 @@ link是一个html的一个标签，而@import是CSS的一个标签, link除了�
 margin: 0 auto;
 ```
 
-<<<<<<< HEAD
 **居中一个浮动元素**
-=======
-居中一个浮动元素
->>>>>>> origin/master
 ```
 float: left;
 margin-left: 50%;
 position: relative;
 left: -250px;
 ```
-<<<<<<< HEAD
 
 * **浏览器的内核分别是什么？**
 
@@ -92,14 +87,6 @@ Opera Presto(已废弃, 与google开发blink)
 2. No More Types for Scripts and Links 
 <link rel="stylesheet" href="test.css" />
 
-
-
-
-
-
-
-=======
->>>>>>> origin/master
 
 
 
