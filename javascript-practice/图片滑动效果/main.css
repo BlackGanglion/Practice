@@ -1,0 +1,24 @@
+.title{
+  text-align: center;
+}
+
+#linklist li{
+  display: inline;
+}
+
+#linklist{
+  width: 200px;
+  margin: 0 auto;
+}
+
+#slideshow{
+  width: 287px;
+  height: 335px;
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+#preview{
+  position: absolute;
+}
