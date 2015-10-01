@@ -44,11 +44,38 @@
     });
 
     var CommentFrom = React.createClass({
+			getInitialState() {
+				return {
+					name: '',
+					text: ''
+				}
+			},
+			updateField(field, e) {
+				//console.log(field);
+				var state = {};
+				state[field] = e.target.value; //读取用户输入值
+				this.setState(state);
+			},
+			handleSubmit(e) {
+				e.preventDefault();
+				this.props.onPost({
+					name: this.state.name,
+					text: this.state.text
+				});
+				this.setState({
+					name:'',
+					text:''
+				});
+			},
       render: function() {
         return (
-          <div className="commentFrom">
-            Hello, world! I am CommentFrom.
-          </div>
+          <form className="commentFrom" onSubmit={this.handleSubmit} >
+					  <input placeholder="Your name" value={this.state.name} onChange={this.updateField.bind(this, 'name')} />
+						<input placeholder="Say something..."
+						  value={this.state.text} onChange={this.updateField.bind(this, 'text')}
+						/>
+						<input type="submit" value="Post" />
+					</form>
         );
       }
     });
@@ -57,13 +84,38 @@
 			loadCommentFromServer: function (){
 				var self = this;
 				//评论数据接口
+				/*
 				$.getJSON(this.props.url, function(data){
 					self.setState({data: data});
+				});
+				*/
+				$.ajax({
+					url: this.props.url,
+					method: 'get',
+					dataType: 'json',
+					success(getData) {
+						self.setState({data: getData})
+					}
 				});
 			},
       getInitialState: function (){
         return {data: []};
       },
+			handlePost(post) {
+				//提交给后端, 并重新渲染
+				var self = this;
+				$.ajax({
+					url: "api/comment.php?action=2",
+					data: {
+						name: post.name,
+						text: post.text
+					},
+					type:"post",
+					success() {
+						self.loadCommentFromServer();
+					}
+				});
+			},
       componentDidMount: function (){
         this.loadCommentFromServer();
         setInterval(this.loadCommentFromServer, this.props.pollInterval);
@@ -73,14 +125,14 @@
           <div className="commentBox">
             <h1>Comments</h1>
             <CommentList data={this.state.data} />
-            <CommentFrom />
+            <CommentFrom onPost={this.handlePost} />
           </div>
         );
       }
     });
 
     React.render(
-      <CommentBox url='comment.json' pollInterval={1000} />,
+      <CommentBox url='api/comment.php?action=1' pollInterval={10000} />,
       document.getElementById('content')
     );
   </script>
