@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var Eventproxy = require('eventproxy');
+
+var ep = new Eventproxy();
 
 var getMdValue = function(content) {
   var md5 = crypto.createHash('md5');
@@ -9,28 +12,30 @@ var getMdValue = function(content) {
 
 mongoose.connect('mongodb://localhost/test');
 
-/*
-var Cat = mongoose.model('Cat', {
-  name: String,
-  friends: [String],
-  age: Number
+ep.all('action1', 'action2', function(){
+  console.log('all successful');
 });
 
-var kitty = new Cat({ name: 'Zildjian', friends: ['tom', 'jerry']});
-kitty.age = 3;
-
-kitty.save(function (err) {
-  console.log('successful');
-});
-*/
-
-var Student = mongoose.model('Student',{
+var studentSchma = mongoose.Schema({
   examid: Number,
   username: String,
   password: String,
   score: [Number],
   updated: { type: Date, default: Date.now }
 });
+
+studentSchma.methods.getMaxScore = function () {
+  var score = this.score;
+  var result = -1;
+  for(var i = 0; i < score.length; i++){
+    if(result < score[i]){
+      result = score[i];
+    }
+  }
+  console.log(result);
+}
+
+var Student = mongoose.model('Student', studentSchma);
 
 var hyy = new Student({
   examid: 1,
@@ -39,10 +44,27 @@ var hyy = new Student({
   score: [100, 99, 97, 0]
 });
 
-hyy.save(function (err) {
+var hy = new Student({
+  examid: 1,
+  username: 'hy',
+  password: getMdValue('hate'),
+  score: [59, 59, 59, 59]
+});
+
+hyy.save(function (err, hyy) {
   if(err){
-    console.log('error');
+    console.log('error1');
     return;
   }
-  console.log('successful');
+  hyy.getMaxScore();
+  ep.emit('action1');
+});
+
+hy.save(function (err, hy) {
+  if(err){
+    console.log('error2');
+    return;
+  }
+  hy.getMaxScore();
+  ep.emit('action2');
 });
