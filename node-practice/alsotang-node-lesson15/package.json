@@ -5,6 +5,7 @@
   "dependencies": {
     "mongoose": "~4.1.9",
     "crypto":"~0.0.3",
-    "eventproxy":"0.3.4"
+    "eventproxy":"~0.3.4",
+    "mongodb":"~2.0.45"
   }
 }
