@@ -22,4 +22,4 @@ lesson 0, 1, 2 比较基础，建过博客也基本都了解了，直接进入le
 
 **2015.10.7**
 
-开始学习Mongodb与Mongoose两个数据库驱动模块，与异步编程结合，对于数据库数据获取采用异步形式
+开始学习Mongodb与Mongoose两个数据库驱动模块，与异步编程结合，对于数据库数据获取采用异步形式(eventproxy, co, promise, generator)

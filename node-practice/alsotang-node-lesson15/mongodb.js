@@ -22,13 +22,52 @@ client.open(function(err, client) {
 
 var MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
+var crypto = require('crypto');
 
 var url = 'mongodb://localhost:27017/test';
 
+var getMdValue = function(content) {
+  var md5 = crypto.createHash('md5');
+  md5.update(content);
+  return md5.digest('hex');
+};
+
+var insertDocuments = function(db, collectionName, insertArray, callback) {
+  var collection = db.collection(collectionName);
+  var size = insertArray.length;
+
+  collection.insertMany(insertArray, function(err, result) {
+    assert.equal(err, null);
+    assert.equal(size, result.result.n);
+    assert.equal(size, result.ops.length);
+
+    console.log('success');
+    callback(result);
+  })
+}
+
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
-  console.log('success');
+  console.log('connect success');
 
-  
+  var docs = [];
+  docs.push({
+    examid: 1,
+    username: 'kkd',
+    password: getMdValue('good'),
+    score: [84, 79, 91, 90]
+  })
+  docs.push({
+    examid: 2,
+    username: 'hg',
+    password: getMdValue('both'),
+    score: [81, 73, 67, 78]
+  })
+
+  insertDocuments(db, 'students', docs, function() {
+    db.close();
+  });
+
+  //console.log(docs);
   //db.close();
 });
