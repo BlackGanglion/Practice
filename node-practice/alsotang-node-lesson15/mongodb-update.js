@@ -6,11 +6,11 @@ co(function*(){
   var db = yield MongoClient.connect('mongodb://localhost:27017/test');
   var collection = db.collection('students');
 
-  //count ÓÃÀ´¼ÆÊı
+  //count ç»Ÿè®¡ç›¸åº”æ–‡æ¡£æ•°
   var count = yield collection.count({examid: 1});
   console.log(count);
 
-  //$set ±íÊ¾Ö»¸üĞÂ examid:2, ²»È»ÕûÌõÎÄµµ»á±ä³É {examid: 2}
+  //$set åªæ›´æ–°æ­¤å­—æ®µ examid:2,ä¸ç„¶æ­¤æ¡å­—æ®µä¼šè¢«å…¨éƒ¨æ›¿æ¢ä¸º {examid: 2}
   yield collection.update({username: 'hy'}, {$set: {examid: 2}});
 
   var count = yield collection.count({examid: 1});
