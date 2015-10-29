@@ -1,7 +1,5 @@
 # ignore nodejs package
 node_modules/
 
-assets/
-
 # ignore database config
 config.php

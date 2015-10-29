@@ -1,0 +1,99 @@
+body{
+  width: 100%;
+  font-family: "Helvetica", "Arial", sans-serif;
+  background-color: #333344;
+  background-image: url(../images/background.gif);
+  background-repeat: repeat-x;
+}
+
+p{
+  font-size: 14px;
+}
+
+.container{
+  width: 80%;
+  margin: 20px auto;
+  border: 1px;
+}
+
+.jumbotron{
+  width: 100%;
+  /* solidÎªÊµÏß */
+  border: 1px solid #3c464d;
+  background-color: #333344;
+}
+
+.jumbotron img:last-child{
+  float: right;
+}
+
+.main{
+  width: 100%;
+}
+
+.nav{
+  width: 100%;
+  background-color: #778899;
+  border-width: 1px 2px;
+  border-style: solid;
+  border-color: #666677;
+  box-sizing: border-box;
+}
+
+.nav ul{
+  margin: 0;
+  padding: 0 100px;
+  height: inherit;
+}
+
+.nav ul li{
+  display: inline-block;
+  border-width: 0 1px 0 1px;
+  border-style: solid;
+  border-color: #9999aa;
+  margin: 0;
+  height: inherit;
+}
+
+.nav ul li:not(:last-child){
+  float: left;
+  border-width: 0 0 0 1px;
+}
+
+.nav ul li a{
+  display: block;
+  font-weight: bold;
+  color: #d0e8ff;
+  text-decoration: none;
+  padding: 5px 20px;
+}
+
+.nav ul li a:hover{
+  color: #333344;
+  background-color: #ffbb55;
+}
+
+.nav ul li a.here:link{
+  background-color: #779999;
+}
+
+.article{
+  background-color: #eeddcc;
+}
+
+.title{
+  margin-top: 0px;
+  padding-left: 100px;
+  padding-top: 20px;
+}
+
+.article p{
+  padding: 0px 100px;
+}
+
+.article img{
+  margin: 20px 0 50px 100px;
+  width: 20%;
+  height: 20%;
+  border-radius: 30px;
+}
