@@ -41,14 +41,14 @@ var hyy = new Student({
   examid: 1,
   username: 'hyy',
   password: getMdValue('love'),
-  score: [100, 99, 97, 0]
+  score: [100, 99, 97, 91]
 });
 
 var hy = new Student({
   examid: 1,
   username: 'hy',
-  password: getMdValue('hate'),
-  score: [59, 59, 59, 59]
+  password: getMdValue('good'),
+  score: [69, 89, 79, 76]
 });
 
 hyy.save(function (err, hyy) {

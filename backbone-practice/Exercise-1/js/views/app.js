@@ -94,7 +94,6 @@
       app.Todos.each(this.filterOne, this);
     },
 
-
     // New
     // Generate the attributes for a new Todo item.
     newAttributes: function() {

@@ -51,23 +51,13 @@ MongoClient.connect(url, function(err, db) {
   console.log('connect success');
 
   var docs = [];
-  docs.push({
-    examid: 1,
-    username: 'kkd',
-    password: getMdValue('good'),
-    score: [84, 79, 91, 90]
-  })
-  docs.push({
-    examid: 2,
-    username: 'hg',
-    password: getMdValue('both'),
-    score: [81, 73, 67, 78]
-  })
+  docs.push({ examid: 1, username: 'Tom', password: getMdValue('good'), score: [84, 79, 91, 90] });
+  docs.push({ examid: 1, username: 'Ross', password: getMdValue('both'), score: [81, 73, 67, 78] });
+  docs.push({ examid: 2, username: 'Alisa', password: getMdValue('great'), score: [78, 69, 87, 71] });
+  docs.push({ examid: 2, username: 'Joan', password: getMdValue('root'), score: [98, 76, 89, 90] });
+  docs.push({ examid: 3, username: 'Mike', password: getMdValue('true'), score: [56, 23, 88, 10] });
 
   insertDocuments(db, 'students', docs, function() {
     db.close();
   });
-
-  //console.log(docs);
-  //db.close();
 });
