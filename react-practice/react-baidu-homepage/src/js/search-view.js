@@ -6,9 +6,9 @@ class SearchView extends React.Component {
     this.state = {
       searchQuery: 'initSearchQuery'
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
+  handleChange = (event) => {
     console.log('handleChange', event.target.value);
     this.setState({
       searchQuery: event.target.value
