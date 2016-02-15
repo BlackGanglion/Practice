@@ -10,6 +10,6 @@ BlackGanglion 的个人练习集, 其中包含对于
 
 * Jquery
 
-* Algorithm
+* Angular
 
-等的练习与实践，以及一些学习笔记与demo的模仿.
+等的练习与实践.
