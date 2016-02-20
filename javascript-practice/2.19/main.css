@@ -1,0 +1,47 @@
+img {
+  width: 113px;
+  height: 113px;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+  height: 115px;
+  width: 115px;
+  margin: auto 5px;
+  border: 1px solid #eee;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover {
+  width: 113px;
+  height: 113px;
+  background-color: rgba(0,179,138,.8);
+  position: absolute;
+  top: 2px;
+  color: white;
+  top: 118px;
+  left: 1px;
+}
+
+.cover span {
+  display: block;
+  font-size: 26px;
+  margin: 8px 4px;
+  text-align: center;
+}
+
+.cover hr {
+  height: 5px;
+  background-color: #eee;
+  border: 0;
+  margin: 0 4px;
+}
+
+.cover p {
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  margin: 4px;
+}
