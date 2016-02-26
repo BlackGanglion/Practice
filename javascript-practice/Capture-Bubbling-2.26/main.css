@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  transition: background 800ms;
+}
+
+html {
+  height: 100%;
+  background: hsl(193, 66%, 55%);
+  font: bold 40px helvetica, sans-serif;
+  color: red;
+}
+
+body {
+  height: 100%;
+  background: hsl(193, 66%, 65%);
+}
+
+div {
+  height: 100%;
+  background: hsl(193, 66%, 75%);
+}
+
+ul {
+  height: 100%;
+  list-style: none;
+  background: hsl(193, 66%, 85%);
+}
+
+li {
+  height: 100%;
+  background: hsl(193, 66%, 95%);
+}
+
+.highlight {
+  background: red;
+}
