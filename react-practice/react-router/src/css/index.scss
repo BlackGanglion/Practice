@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.blog-app {
+  margin-left: 40px;
+}
+.blog-app >ul {
+  width: 100%;
+  height: 40px;
+  padding-left: 0;
+}
+.blog-app >ul li{
+  float: left;
+  margin-right: 20px;
+  list-style: none outside none;
+}
+.blog-app >ul li a.active{
+  color: #ff0000;
+}
