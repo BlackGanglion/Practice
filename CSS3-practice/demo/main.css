@@ -1,0 +1,86 @@
+.rotate {
+  width: 200px;
+  height: 200px;
+  border: 1px dotted red;
+  margin: 100px auto;
+}
+.rotate div {
+  width: 200px;
+  height: 200px;
+  background: orange;
+  -webkit-transform: rotate(40deg);
+  transform: rotate(40deg);
+}
+
+.skew {
+  width: 300px;
+  height: 100px;
+  border: 2px dotted red;
+  margin: 30px auto;
+}
+.skew div {
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+  background: orange;
+  -webkit-transform: skew(45deg, 10deg);
+  -moz-transform:skew(45deg, 10deg)
+  transform:skew(45deg, 10deg);
+}
+
+.scale {
+  width: 200px;
+  height: 200px;
+  border:2px dashed red;
+  margin: 100px auto;
+}
+.scale div {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  background: orange;
+  text-align: center;
+  color: #fff;
+}
+.scale div:hover {
+  opacity: .5;
+  -webkit-transform: scale(1.5);
+  -moz-transform:scale(1.5)
+  transform: scale(1.5);
+}
+
+.translate {
+  width: 200px;
+  height: 200px;
+  border: 2px dotted red;
+  margin: 20px auto;
+}
+.translate div {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: orange;
+  color: #fff;
+  -webkit-transform: translate(50px,100px);
+  -moz-transform:translate(50px,100px);
+  transform: translate(50px,100px);
+}
+
+.transform-origin {
+  width: 300px;
+  height: 300px;
+  margin: 100px auto;
+  border: 2px dotted red;
+  line-height: 300px;
+  text-align: center;
+}
+.transform-origin div {
+  background: orange;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
