@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  min-width: 700px;
+}
+.header, .footer{
+  border: 1px solid #333;
+  background: #aaa;
+  text-align: center;
+}
+
+/* margin + left / right */
+.left, .middle, .right{
+  /* relative是为了消除container的padding */
+  position: relative;
+  float: left;
+  min-height: 130px;
+}
+.container{
+  padding:0 220px 0 200px;
+  overflow: hidden;
+}
+.left{
+  /* 100% 就是父元素的width */
+  margin-left: -100%;
+  left: -200px;
+  width: 200px;
+  background: red;
+}
+.right{
+  margin-left: -220px;
+  right: -220px;
+  width: 220px;
+  background: green;
+}
+.middle{
+  width: 100%;
+  background: blue;
+}
+
+/* 浮动清除 */
+.footer{
+  clear: both;
+}

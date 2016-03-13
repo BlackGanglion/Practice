@@ -1,0 +1,43 @@
+*{
+  margin:0;
+  padding:0;
+}
+/* 用来定宽 */
+body{
+  min-width: 700px;
+}
+.header, .footer{
+  border: 1px solid #333;
+  background: #aaa;
+  text-align: center;
+}
+
+/* 圣杯布局middle采用padding, 双飞翼布局采用margin */
+.left, .container, .right{
+  float: left;
+  min-height: 130px;
+}
+.left{
+  margin-left: -100%;
+  width: 200px;
+  background: red;
+}
+.right{
+  margin-left: -220px;
+  width: 220px;
+  background: blue;
+}
+.container{
+  width: 100%;
+}
+.middle{
+  margin-left: 200px;
+  margin-right: 220px;
+  background: green;
+  min-height: 130px;
+}
+
+/* 浮动清除 */
+.footer{
+  clear: both;
+}
