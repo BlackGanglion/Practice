@@ -1,0 +1,78 @@
+@keyframes changecolor{
+  0%{
+    background: red;
+  }
+  20%{
+    background: blue;
+  }
+  40%{
+    background: orange;
+  }
+  60%{
+    background: green;
+  }
+  80%{
+    background: yellow;
+  }
+  100%{
+    background: red;
+  }
+}
+
+.colorChange {
+  width: 300px;
+  height: 200px;
+  background: red;
+  color: #fff;
+  margin: 20px auto;
+  text-align: center;
+  animation: changecolor 5s ease-out .2s;
+}
+
+@keyframes around{
+  0% {
+    transform: translateX(0);
+  }
+  25%{
+    transform: translateX(180px);
+  }
+  50%{
+     transform: translate(180px, 180px);
+  }
+  75%{
+    transform:translate(0, 180px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+.animation-name {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+.animation-name span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: orange;
+  border-radius: 100%;
+  /* 指定动画名称为around */
+  animation-name: around;
+  /* 设置动画持续时间 */
+  animation-duration: 10s;
+  /* 设置动画播放方式，主要是速度 */
+  animation-timing-function: ease-in-out;
+  /* 定义动画开始播放的时间 */
+  animation-delay: 1s;
+  /* 设置动画播放次数, infinite为无限制播放 */
+  animation-iteration-count: infinite;
+  /* normal向前播放，alternate在第偶数次向前播放，第奇数次向反方向播放 */
+  animation-direction: alternate;
+  /* 暂停动画，默认为running */
+  animation-play-state: running;
+}
+.animation-name:hover span {
+  animation-play-state: paused;
+}

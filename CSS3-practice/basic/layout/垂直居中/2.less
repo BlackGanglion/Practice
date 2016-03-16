@@ -1,0 +1,20 @@
+@wrapWidth: 400px;
+@wrapHeight: 300px;
+
+.wrap{
+  margin: 0 auto;
+  width: @wrapWidth;
+  height: @wrapHeight;
+  background-color: #ccc;
+}
+
+.content{
+  @contentWidth: 100px;
+  @contentHeight: 50px;
+  width: @contentWidth;
+  height: @contentHeight;
+  padding: (@wrapHeight - @contentHeight) / 2 (@wrapWidth - @contentWidth) / 2;
+  background-color: #333;
+  /* 背景从content区域向外裁剪，超过context区域的背景将被裁剪掉 */
+  background-clip: content-box;
+}

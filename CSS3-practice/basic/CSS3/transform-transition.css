@@ -64,9 +64,9 @@
   text-align: center;
   background: orange;
   color: #fff;
-  -webkit-transform: translate(50px,100px);
-  -moz-transform:translate(50px,100px);
-  transform: translate(50px,100px);
+  -webkit-transform: translate(50px, 100px);
+  -moz-transform:translate(50px, 100px);
+  transform: translate(50px, 100px);
 }
 
 .transform-origin {
@@ -83,4 +83,51 @@
   transform: rotate(45deg);
   -webkit-transform-origin: left top;
   transform-origin: left top;
+}
+
+.transition-duration {
+  width: 300px;
+  height: 200px;
+  background-color: orange;
+  margin: 150px auto;
+  /* 过渡所作用的属性 */
+  -webkit-transition-property: height;
+  transition-property: height;
+  /* 过渡所需要的时间 */
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  /* 过渡效果的速度模式 */
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  /* 过渡效果的延迟 */
+  -webkit-transition-delay: .2s;
+  transition-delay: .2s;
+}
+.transition-duration:hover {
+  height: 100px;
+}
+
+.transition-delay {
+  width: 400px;
+  height: 200px;
+  margin: 20px auto;
+  border: 2px dotted red;
+  position:relative;
+}
+.transition-delay div {
+  padding: 15px 20px;
+  color: #fff;
+  background-color: orange;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* translate平移都相对原本位置而言 */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+.transition-delay div:hover {
+  background-color: red;
+  border-radius: 10px;
 }

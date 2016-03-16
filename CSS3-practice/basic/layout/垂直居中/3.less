@@ -1,0 +1,15 @@
+.wrap{
+  @wrapHeight : 400px;
+  @contenHeight : 100px;
+  overflow: hidden;
+  width: 100%;
+  height: @wrapHeight;
+  background-color: #ccc;
+  .ele{
+    margin: (@wrapHeight - @contenHeight) / 2 auto;
+    width: 100px;
+    height: @contenHeight;
+    background-color: #333;
+    color: #fff;
+  }
+}
