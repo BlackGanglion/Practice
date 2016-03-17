@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>拖放原生实现</title>
+  </head>
+  <style media="screen">
+  #main {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+    background-color: blue;
+  }
+  </style>
+  <body>
+    <div id="main"></div>
+  <script type="text/javascript">
+  var target = document.getElementById("main");
+  //console.log(target);
+  var DragDrop = function() {
+    var dragging = null,
+        diffX = 0,
+        diffY = 0;
+
+    function handler(event) {
+      switch (event.type) {
+        case "mousedown":
+          if(event.target.id === 'main'){
+            dragging = target;
+            diffX = event.clientX - target.offsetLeft;
+            diffY = event.clientY - target.offsetTop;
+          }
+          //console.log(dragging);
+          break;
+        case "mousemove":
+          if(dragging !== null){
+            dragging.style.left = (event.clientX - diffX) + "px";
+            dragging.style.top = (event.clientY - diffY) + "px";
+          }
+          break;
+        case "mouseup":
+          dragging = null;
+          break;
+      }
+    };
+
+    return {
+      enable: function() {
+        /* 按下 -> 拖动 -> 提起 */
+        document.addEventListener("mousedown", handler, false);
+        document.addEventListener("mousemove", handler, false);
+        document.addEventListener("mouseup", handler, false);
+      },
+      disable: function() {
+        document.removeEventListener("mousedown", handler, false);
+        document.removeEventListener("mousemove", handler, false);
+        document.removeEventListener("mouseup", handler, false);
+      }
+    }
+  };
+
+  DragDrop().enable();
+  </script>
+  </body>
+</html>

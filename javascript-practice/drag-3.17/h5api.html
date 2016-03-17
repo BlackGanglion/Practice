@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>拖放H5api实现</title>
+  </head>
+  <style media="screen">
+  #main {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+    background-color: blue;
+  }
+  #all {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+  }
+  </style>
+  <body>
+    <div id="main" draggable="true"></div>
+    <div id="all"></div>
+  <script type="text/javascript">
+  var target = document.getElementById("main"),
+      all = document.getElementById("all"),
+      diffX = 0,
+      diffY = 0;
+
+  function drag(event) {
+    diffX = event.clientX - target.offsetLeft;
+    diffY = event.clientY - target.offsetTop;
+    event.dataTransfer.setData("Text", event.target.id);
+  }
+  function drop(event) {
+    //console.log(event);
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    target.style.left = (event.clientX - diffX) + "px";
+    target.style.top = (event.clientY - diffY) + "px";
+  }
+  function allowDrop(event) {
+    event.preventDefault();
+    //console.log(event);
+  }
+
+  target.addEventListener("dragstart", drag, false);
+  all.addEventListener("drop", drop, false);
+  all.addEventListener("dragover", allowDrop, false);
+  </script>
+  </body>
+</html>

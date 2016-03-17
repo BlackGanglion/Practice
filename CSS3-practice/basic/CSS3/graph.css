@@ -1,0 +1,39 @@
+div{
+  margin: 20px;
+}
+
+/* 利用border-radius */
+.semi-circle{
+  height: 100px;
+  width: 50px;
+  border-radius: 50px 0 0 50px;
+  background: #9da;
+}
+
+/* 利用border */
+.triangle1{
+  width: 0;
+  height: 0;
+  /* transparent 背景透明 */
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #9da;
+}
+
+.triangle2{
+  width: 0;
+  height: 0;
+  border-top: 100px solid #9da;
+  border-right: 100px solid transparent;
+}
+
+/* transfrom: skew 扭转 */
+.parallelogram {
+  width: 150px;
+  height: 100px;
+  margin-left:20px;
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+  background: #9da;
+}
