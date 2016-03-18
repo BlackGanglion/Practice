@@ -1,0 +1,16 @@
+.wrap {
+  text-align: center;
+  width: 100%;
+  height: 400px;
+  background-color: #ccc;
+  font-size: 0;
+}
+.ele {
+  position: absolute;
+  margin-left: -50px;
+  margin-top: 150px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  background-color: #333;
+}

@@ -1,0 +1,24 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.wrap p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.wrap img:nth-child(1) {
+  visibility: hidden;
+}
+.wrap img:nth-child(2) {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+}
