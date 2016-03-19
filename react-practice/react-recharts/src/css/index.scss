@@ -1,0 +1,177 @@
+@import "include.scss";
+
+header {
+  width: 100%;
+  margin: 0 auto;
+  height: 197px;
+  background: #555;
+  position: relative;
+}
+
+nav {
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  position: absolute;
+  bottom: 0;
+  height: 43px;
+  ul {
+    li {
+      flex: 1;
+      line-height: 43px;
+      height: 100%;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    li:first-child {
+      -webkit-box-shadow:0 0 10px #0CC;
+      -moz-box-shadow:0 0 10px #0CC;
+      box-shadow:0 0 10px #0CC;
+    }
+    li:hover {
+      color: white;
+      background-color: orange;
+    }
+    & {
+      margin: 0 60px;
+      height: 100%;
+      display: flex;
+    }
+  }
+}
+
+.header-main {
+  padding-left: 260px;
+}
+
+.logo {
+  width: 193px;
+  left: 60px;
+  position: absolute;
+  height: 100%;
+  background-color: red;
+  display: inline-block;
+  font-size: 48px;
+  text-align: center;
+  h3 {
+    color: white;
+  }
+}
+
+.login {
+  padding: 20px 50px;
+  color: #ccc;
+  ul {
+    li{
+      padding: 0px 20px;
+      &:not(:last-child) {
+        border-right: 1px dotted #ccc;
+      }
+    }
+    & {
+      float: left;
+    }
+    &:last-child {
+      float: right;
+    }
+  }
+  &::after {
+    @extend .clearfix
+  }
+}
+
+.search {
+  padding: 20px 70px;
+  font-size: 16px;
+  font-weight: bold;
+  input {
+    height: 30px;
+    width: 300px;
+  }
+  button {
+    height: 36px;
+    padding: 0px 20px;
+    background-color: #f0ad4e;
+    color: white;
+    cursor: pointer;
+  }
+  &:after {
+    @extend .clearfix;
+  }
+  .search-button {
+    float: right;
+    height: 36px;
+    padding: 0 30px;
+    margin: 0 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #337ab7;
+  }
+}
+
+.goodsShow {
+  width: 90%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: white;
+  div a{
+    text-decoration: none;
+    color: #1790dd;
+    display: inline-block;
+    margin: 0 4px;
+  }
+  &:after {
+    @extend .clearfix;
+  }
+  h3 {
+    margin-bottom: 50px;
+  }
+}
+
+.goodsInfo {
+  float: left;
+  .pic {
+    float: left;
+    img {
+      margin-top: 30px;
+      margin-left: 20px;
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .content {
+    overflow: hidden;
+    zoom: 1;
+    padding-left: 100px;
+    padding-top: 50px;
+    text-align: center;
+  }
+  p{
+    color: #eee;
+  }
+  button {
+    height: 60px;
+    width: 150px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.goodsChart {
+  float: right;
+}
+
+.content-pirce {
+  padding: 6px;
+  height: 30px;
+  background-color: #eee;
+  margin-bottom: 10px;
+  span {
+    color: red;
+    font-weight: bold;
+  }
+}
