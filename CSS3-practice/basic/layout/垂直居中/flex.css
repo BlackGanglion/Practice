@@ -1,0 +1,15 @@
+.wrap {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  /* 主轴对齐方式 */
+  justify-content: center;
+  /* 交叉轴对齐方式 */
+  align-items: center;
+}
+
+.ele {
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+}

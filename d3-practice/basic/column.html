@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>柱状图</title>
+    <style media="screen">
+      .container {
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      .axis path,
+      .axis line{
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+      }
+
+      .axis text {
+        font-family: sans-serif;
+        font-size: 11px;
+      }
+
+      .MyRect {}
+
+      .MyText {
+        fill: white;
+        text-anchor: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script src="../node_modules/d3/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    var width = 400;
+    var height = 400;
+
+    var svg = d3.select(".container")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // 周围留空白
+    var padding = { left: 30, right: 30, top: 20, bottom: 20 };
+    var dataset = [10, 20, 30, 40, 33, 24, 12, 5];
+
+    // 序列比例尺
+    var xScale = d3.scale.ordinal()
+        .domain(d3.range(dataset.length))
+        // [0, width - padding.left - padding.right] 会被分成 dataset.length 段
+        .rangeRoundBands([0, width - padding.left - padding.right]);
+
+    // 线性数值比例尺
+    var yScale = d3.scale.linear()
+        .domain([0, d3.max(dataset)])
+        .range([height - padding.top - padding.bottom, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left");
+
+    var rectPadding = 4;
+
+    var rects = svg.selectAll(".MyRect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("class", "MyRect")
+        .attr("transform", "translate(" + padding.left + ", " + padding.top + ")")
+        .attr("x", function(d, i) {
+          return xScale(i) + rectPadding / 2;
+        })
+        /*
+        .attr("y", function(d) {
+          return yScale(d);
+        })
+        */
+        .attr("width", xScale.rangeBand() - rectPadding )
+        .attr("y",function(d) {
+          var min = yScale.domain()[0];
+          return yScale(min);
+        })
+        .attr("height", function(d) {
+          return 0;
+        })
+        .attr("fill","steelblue")
+        .on("mouseover",function(d,i){
+            d3.select(this)
+                .attr("fill","yellow");
+        })
+        .on("mouseout",function(d,i){
+            d3.select(this)
+                .transition()
+                .duration(500)
+                .attr("fill","steelblue");
+        })
+        .transition()
+        .delay(function(d, i){
+          return i * 200;
+        })
+        .duration(2000)
+        .ease("bounce")
+        .attr("y", function(d) {
+          return yScale(d);
+        })
+        .attr("height", function(d) {
+          return height - padding.top - padding.bottom - yScale(d);
+        });
+
+    var texts = svg.selectAll(".MyText")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .attr("class", "MyText")
+        .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+        .attr("x", function(d, i) {
+          return xScale(i) + rectPadding / 2;
+        })
+        .attr("dx", function() {
+          return (xScale.rangeBand() - rectPadding) / 2;
+        })
+        .attr("dy", function(d) {
+          return 35;
+        })
+        .text(function(d) {
+          return d;
+        })
+        .attr("y",function(d) {
+          var min = yScale.domain()[0];
+          return yScale(min);
+        })
+        .transition()
+        .delay(function(d, i){
+          return i * 200;
+        })
+        .duration(2000)
+        .ease("bounce")
+        .attr("y", function(d) {
+          return yScale(d);
+        });
+
+    svg.append("g")
+      .attr("class", "axis")
+      .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "axis")
+      .attr("transform","translate(" + padding.left + "," + padding.top + ")")
+      .call(yAxis);
+
+    </script>
+  </body>
+</html>

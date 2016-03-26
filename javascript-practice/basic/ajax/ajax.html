@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ajax原生 - just a prctice</title>
+  </head>
+  <div class="container">
+    <form id="user-info">
+      <p>姓名:</p>
+      <input type="text" name="user" value="">
+      <p>密码</p>
+      <input type="password" name="password" value="">
+      <button type="button" id="submit">提交</button>
+    </form>
+    <div class="show">
+      <p id="name">姓名:</p>
+      <p id="password">密码:</p>
+    </div>
+  </div>
+  <body>
+    <script type="text/javascript">
+    var ajax = function() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4) {
+          if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            var info = JSON.parse(xhr.responseText);
+            var name = info.user,
+                password = info.password;
+            var nameText = document.createTextNode(name),
+                passwordText = document.createTextNode(password);
+            var nameNode = document.createElement("p"),
+                posswordNode = document.createElement("p");
+            nameNode.appendChild(nameText);
+            posswordNode.appendChild(passwordText);
+
+            var parentNode = document.getElementsByClassName("show")[0];
+            parentNode.appendChild(passwordText);
+            parentNode.insertBefore(nameNode, document.getElementById("password"));
+          } else {
+            console.log("unsuccess" + xhr.status);
+          }
+        }
+      }
+      xhr.open("post", "post.php", true);
+      //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      var form = document.getElementById("user-info");
+      xhr.timeout = 1000;
+      xhr.ontimeout = function() {
+        console.log('get timeout');
+      }
+      xhr.send(new FormData(form));
+    }
+
+    var button = document.getElementById("submit");
+    button.addEventListener("click", function(e) {
+      ajax();
+    }, false);
+
+    </script>
+  </body>
+</html>
