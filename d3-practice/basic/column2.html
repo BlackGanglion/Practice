@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>柱状图2</title>
+    <style media="screen">
+      .container {
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      .MyRect {
+        fill: steelblue;
+      }
+
+      .MyText {
+        fill: white;
+        text-anchor: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <div class="container">
+      <button onclick = "sort()" type = "button" name = "button">排序</button>
+      <button onclick = "add()" type = "button" name = "button">增加数据</button>
+    </div>
+    <script src="../node_modules/d3/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    var width = 600;
+    var height = 500;
+
+    var svg = d3.select(".container")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // 周围留空白
+    var padding = { left: 30, right: 30, top: 20, bottom: 20 };
+    var dataset = [10, 11, 20, 30, 40, 33, 24, 12, 5];
+
+    var rectStep = 35;
+    var rectWidth = 30;
+
+    var rects = svg.selectAll(".MyRect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("class", "MyRect")
+        .attr("x", function(d, i) {
+          return padding.left + i * rectStep;
+        })
+        .attr("y", function(d) {
+          return height - padding.bottom - (d * 10);
+        })
+        .attr("width", rectWidth)
+        .attr("height", function(d) {
+          return d * 10;
+        });
+
+    var texts = svg.selectAll(".MyText")
+        .data(dataset)
+        .enter()
+        .append("text")
+        .attr("class", "MyText")
+        .attr("x", function(d, i) {
+          return padding.left + i * rectStep;
+        })
+        .attr("y", function(d) {
+          return height - padding.bottom - (d * 10);
+        })
+        .attr("dx", rectWidth / 2)
+        .attr("dy", "1em")
+        .text(function(d) {
+          return d;
+        });
+
+    function draw() {
+      var updateRect = svg.selectAll(".MyRect")
+          .data(dataset);
+
+      //console.log(updateRect);
+
+      updateRect.attr("class", "MyRect")
+          .attr("x", function(d, i) {
+            return padding.left + i * rectStep;
+          })
+          .attr("y", function(d) {
+            return height - padding.bottom - (d * 10);
+          })
+          .attr("width", rectWidth)
+          .attr("height", function(d) {
+            return d * 10;
+          });
+
+      updateRect.enter()
+          .append("rect")
+          .attr("class", "MyRect")
+          .attr("x", function(d, i) {
+            return padding.left + i * rectStep;
+          })
+          .attr("y", function(d) {
+            return height - padding.bottom - (d * 10);
+          })
+          .attr("width", rectWidth)
+          .attr("height", function(d) {
+            console.log('1');
+            return d * 10;
+          });
+
+      updateRect.exit().remove();
+
+      var updateText = svg.selectAll(".MyText")
+          .data(dataset);
+
+      //console.log(updateText.enter());
+
+      updateText.attr("class", "MyText")
+          .attr("x", function(d, i) {
+            return padding.left + i * rectStep;
+          })
+          .attr("y", function(d) {
+            return height - padding.bottom - (d * 10);
+          })
+          .attr("dx", rectWidth / 2)
+          .attr("dy", "1em")
+          .text(function(d) {
+            return d;
+          });
+
+      updateText.enter()
+          .append("text")
+          .attr("class", "MyText")
+          .attr("x", function(d, i) {
+            return padding.left + i * rectStep;
+          })
+          .attr("y", function(d) {
+            return height - padding.bottom - (d * 10);
+          })
+          .attr("dx", rectWidth / 2)
+          .attr("dy", "1em")
+          .text(function(d) {
+            console.log('2');
+            return d;
+          });
+
+      updateText.exit().remove();
+    }
+
+    function sort() {
+      dataset.sort(d3.ascending);
+      draw();
+    }
+    function add() {
+      dataset.push( Math.floor(Math.random() * 40) );
+      draw();
+    }
+    </script>
+  </body>
+</html>

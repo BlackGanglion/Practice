@@ -88,12 +88,12 @@
         .attr("height", function(d) {
           return 0;
         })
-        .attr("fill","steelblue")
-        .on("mouseover",function(d,i){
+        .attr("fill", "steelblue")
+        .on("mouseover", function(d,i){
             d3.select(this)
                 .attr("fill","yellow");
         })
-        .on("mouseout",function(d,i){
+        .on("mouseout", function(d,i){
             d3.select(this)
                 .transition()
                 .duration(500)
