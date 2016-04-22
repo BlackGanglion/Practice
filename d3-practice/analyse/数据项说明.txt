@@ -1,0 +1,20 @@
+private String
+	ProBrand, //产品品牌
+	ProId,  //产品id
+	ProName, //产品名称
+	ProArea, //产品产地
+	ProObject, //产品对象
+	ProType, //产品类型（低糖）
+	ProFrom,//产品的来源网站（天猫，京东...）
+	ProUrl, //产品页面链接
+	ProPicUrl, //产品对应的图片链接
+	ProDeliberyAdd, //产品发货地
+	ProOtherParam; // 其它参数
+
+	double ProPrice;//产品促销价
+	int ProMonthSale,//产品月销售量
+	ProRenQi, //产品人气
+	ProSize, //产品净含量 单位g
+	ProCommonNum;  //评论数
+
+	String CrawlerTime; //爬取时间
