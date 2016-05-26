@@ -20,7 +20,11 @@ read.readFile("data.json", 'utf-8', (err, data) => {
   let res = [];
   for(let e in areaList) {
     count += areaList[e];
-    res.push([e, areaList[e]]);
+    //res.push([e, areaList[e]]);
+    res.push({
+      value: areaList[e],
+      name: e
+    })
   }
   if(count === l) {
     console.log('number is right');
@@ -28,5 +32,6 @@ read.readFile("data.json", 'utf-8', (err, data) => {
     console.log('number is wrong');
   }
 
-  console.log(JSON.stringify(res));
+  //console.log(JSON.stringify(res));
+  console.log(res);
 });

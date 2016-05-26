@@ -5,9 +5,148 @@
     <title>奶粉数据分析报告</title>
   </head>
   <body>
+    <div id="main1" style="width: 600px;height:400px;"></div>
+    <div id="main2" style="width: 600px;height:400px;"></div>
+
 
   <script src="../node_modules/d3/d3.min.js" charset="utf-8"></script>
+  <script src="echarts.min.js" charset="utf-8"></script>
   <script type="text/javascript">
+  var myChart = echarts.init(document.getElementById('main1'));
+
+  var option = {
+    backgroundColor: '#2c343c',
+
+    title: {
+        text: 'Customized Pie',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '50%'],
+            data:[
+              { value: 60, name: '新西兰' },
+              { value: 324, name: '德国' },
+              { value: 471, name: '荷兰' },
+              { value: 23, name: '英国' },
+              { value: 87, name: '爱尔兰' },
+              { value: 14, name: '罐装' },
+              { value: 26, name: '美国' },
+              { value: 1, name: '加拿大' },
+              { value: 10, name: '澳大利亚' },
+              { value: 14, name: '新加坡' },
+              { value: 1, name: '日本' },
+              { value: 11, name: '丹麦' }
+            ].sort(function (a, b) { return a.value - b.value}),
+            roseType: 'angle',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+      };
+      myChart.setOption(option);
+  </script>
+  <script type="text/javascript">
+  var myChart = echarts.init(document.getElementById('main2'));
+
+  var option = {
+    title : {
+        text: '1042条奶粉数据分布',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ['新西兰', '德国', '荷兰', '英国', '爱尔兰',
+        '罐装', '美国', '加拿大', '澳大利亚', '新加坡', '日本', '丹麦' ]
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+              { value: 60, name: '新西兰' },
+              { value: 324, name: '德国' },
+              { value: 471, name: '荷兰' },
+              { value: 23, name: '英国' },
+              { value: 87, name: '爱尔兰' },
+              { value: 14, name: '罐装' },
+              { value: 26, name: '美国' },
+              { value: 1, name: '加拿大' },
+              { value: 10, name: '澳大利亚' },
+              { value: 14, name: '新加坡' },
+              { value: 1, name: '日本' },
+              { value: 11, name: '丹麦' }
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+      };
+      myChart.setOption(option);
+  </script>
+  <!--
+  <script type="text/javascript">
+  var width = 500;
+  var height = 500;
+
+  var svg = d3.select("body")
+             .append("svg")
+             .attr("width", width)
+             .attr("height", height)
+
   var dataset = [["新西兰",60],["德国",324],["荷兰",471],["英国",23],["爱尔兰",87],["罐装",14],["美国",26],["加拿大",1],["澳大利亚",10],["新加坡",14],["日本",1],["丹麦",11]];
 
   var pie = d3.layout.pie()
@@ -15,7 +154,139 @@
 
   var piedata = pie(dataset);
 
-  console.log(piedata);
+  //console.log(piedata);
+
+  var outerRadius = width / 3;
+  var innerRadius = 0;
+
+  var arc = d3.svg.arc()
+             .innerRadius(innerRadius)
+             .outerRadius(outerRadius);
+
+  var color = d3.scale.category20();
+
+  // 每个<g>包含一段弧 弧由<path>、<text>、<line>
+  var arcs = svg.selectAll("g")
+                 .data(piedata)
+                 .enter()
+                 .append("g")
+                 .attr("transform",
+                    "translate(" + ( width / 2 ) + "," + ( height / 2 ) + ")" );
+                    // 平移到svg的中心
+
+  arcs.append("path")
+         .attr("fill", function(d, i) {
+           return color(i);
+         })
+         .attr("d", function(d){
+           return arc(d);
+         });
+
+  arcs.append("text")
+     .attr("transform", function(d){
+       // 弧中心坐标
+       var x = arc.centroid(d)[0] * 1.4;
+       var y = arc.centroid(d)[1] * 1.4;
+       return "translate(" + x + "," + y + ")";
+     })
+     .attr("text-anchor", "middle")
+     .text(function(d){
+       var percent = Number(d.value) /
+               d3.sum(dataset, function(d) { return d[1]; }) * 100;
+       if(percent > 5) return percent.toFixed(1) + "%";
+     });
+
+  arcs.append("line")
+    .attr("stroke", "black")
+    .attr("x1", function(d){ return arc.centroid(d)[0] * 2; })
+    .attr("y1", function(d){ return arc.centroid(d)[1] * 2; })
+    .attr("x2", function(d){ return arc.centroid(d)[0] * 2.2; })
+    .attr("y2", function(d){ return arc.centroid(d)[1] * 2.2; });
+
+
+  arcs.append("text")
+         .attr("transform", function(d) {
+           var x = arc.centroid(d)[0] * 2.5;
+           var y = arc.centroid(d)[1] * 2.5;
+           return "translate(" + x + "," + y + ")"
+         })
+         .attr("text-anchor", "middle")
+         .text(function(d){
+           return d.data[0];
+         })
+  </script>
+  -->
+  <script type="text/javascript">
+  var width = 500;
+  var height = 500;
+
+  var svg = d3.select("body")
+             .append("svg")
+             .attr("width", width)
+             .attr("height", height)
+
+  var dataset = [["新西兰",60],["德国",324],["荷兰",471],["英国",23],["爱尔兰",87],["罐装",14],["美国",26],["加拿大",1],["澳大利亚",10],["新加坡",14],["日本",1],["丹麦",11]];
+
+  var pie = d3.layout.pie()
+             .value(function(d) { return d[1]; });
+
+  var piedata = pie(dataset);
+
+  //console.log(piedata);
+
+  var outerRadius = width / 3;
+  var innerRadius = 0;
+
+  var arc = d3.svg.arc()
+             .innerRadius(innerRadius)
+             .outerRadius(outerRadius);
+
+  var color = d3.scale.category20();
+
+  // 每个<g>包含一段弧 弧由<path>、<text>、<line>
+  var arcs = svg.selectAll("g")
+                 .data(piedata)
+                 .enter()
+                 .append("g")
+                 .attr("transform",
+                    "translate(" + ( width / 2 ) + "," + ( height / 2 ) + ")" );
+                    // 平移到svg的中心
+
+  arcs.append("path")
+         .attr("fill", function(d, i) {
+           return color(i);
+         })
+         .attr("fill-opacity", "0.6")
+         .attr("d", function(d){
+           return arc(d);
+         });
+
+  arcs.append("text")
+     .attr("transform", function(d){
+       // 弧中心坐标
+       var x = arc.centroid(d)[0] * 1.4;
+       var y = arc.centroid(d)[1] * 1.4;
+       return "translate(" + x + "," + y + ")";
+     })
+     .attr("text-anchor", "middle")
+     .text(function(d){
+       var percent = Number(d.value) /
+               d3.sum(dataset, function(d) { return d[1]; }) * 100;
+       if(percent > 5) return percent.toFixed(1) + "%";
+     });
+  </script>
+  <script type="text/javascript">
+  var svg = document.getElementsByTagName("svg")[0];
+  svg.addEventListener("mouseover", function(e) {
+    if(e.target.tagName == 'path') {
+      e.target.setAttribute("fill-opacity", "1");
+    }
+  }, false);
+  svg.addEventListener("mouseout", function(e) {
+    if(e.target.tagName == 'path') {
+      e.target.setAttribute("fill-opacity", "0.6");
+    }
+  }, false);
   </script>
   </body>
 </html>
